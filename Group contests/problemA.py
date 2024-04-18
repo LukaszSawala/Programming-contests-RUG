@@ -1,11 +1,12 @@
-lastSun, sunRecovery = map(int,input().split())
-lastMoon, moonRecovery = map(int,input().split())
-lastSun = -lastSun
-lastMoon = -lastMoon
-while lastMoon != lastSun:
-    if lastMoon < lastSun:
-        lastMoon+=moonRecovery
-    else:
-        lastSun+=sunRecovery
+dice1, dice2 = input().split()
+dice1 = int(dice1)
+dice2 = int(dice2)
+possibilities = [0 for i in range(dice1+dice2)]
+for i in range(dice1):
+    for j in range(dice2):
+        possibilities[i+j] += 1
 
-print(lastSun)
+maximum = max(possibilities)
+for i in range(len(possibilities)):
+    if possibilities[i] == maximum:
+        print(i+2)
